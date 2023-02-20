@@ -39,7 +39,8 @@ export class DynamicFormComponent implements OnChanges {
 
   @Input() json:JsonForm;
   public form : FormGroup = this.fb.group({});
-
+  imageURL: string;
+  
   constructor(private fb: FormBuilder,public dialog: MatDialog) {}
 
   ngOnChanges(changes: SimpleChanges) {
@@ -106,13 +107,12 @@ export class DynamicFormComponent implements OnChanges {
 
       this.form.addControl(
         control.name,
-        this.fb.control(control.value, validatorsToAdd)
+        this.fb.control(control.items.value, validatorsToAdd)
       );
     }
   }
 
   onSubmit() {
-    debugger;
     if(this.form.valid){    
       console.log('Form valid: ', this.form.valid);
       console.log('Form values: ', this.form.value);
@@ -122,12 +122,29 @@ export class DynamicFormComponent implements OnChanges {
 
   openDialog(data) {
     const dialogRef = this.dialog.open(DialogComponent, {
-      data: { firstName: data.name, animal: 'this.animal'},
+      data: {
+        name: this.form.value.name,
+        age: this.form.value.age,
+        dob: this.form.value.dob,
+        email: this.form.value.email,
+        comments: this.form.value.comments,
+        imageURL: this.imageURL,
+      },
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
     });
+  }
+
+
+  showPreview(event, controlame) {
+    const file = (event.target as HTMLInputElement).files[0];
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.imageURL = reader.result as string;
+    }
+    reader.readAsDataURL(file)    
   }
 
 }

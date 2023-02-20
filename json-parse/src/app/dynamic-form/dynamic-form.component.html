@@ -1,9 +1,9 @@
-<form *ngIf="form" [formGroup]="form" (ngSuberrorsmit)="onSubmit()">
+<form *ngIf="form" [formGroup]="form" (ngSubmit)="onSubmit()">
     <ng-container *ngFor="let control of json?.controls">
         <ng-container *ngIf="['text','password','search'].includes(control.type)">
             <div class="mb-3">
                 <label class="form-label">{{ control.label }}</label>
-                <input [type]="control.type" [formControlName]="control.name" [value]="control.value"
+                <input [type]="control.type" [formControlName]="control.name" [value]="control.items.value"
                     [pattern]="control.regex" class="form-control"
                     [class.is-invalid]="form.get(control.name).invalid && form.get(control.name).touched">
                 <div class="invalid-feedback">
@@ -18,7 +18,7 @@
         <ng-container *ngIf="control.type === 'textarea'">
             <div class="mb-3">
                 <label class="form-label">{{ control.label }}</label>
-                <textarea [formControlName]="control.name" [value]="control.value" [pattern]="control.regex" class="form-control" [class.is-invalid]="form.get(control.name).invalid && form.get(control.name).touched"></textarea>
+                <textarea [formControlName]="control.name" [value]="control.items.value" [pattern]="control.regex" class="form-control" [class.is-invalid]="form.get(control.name).invalid && form.get(control.name).touched"></textarea>
                 <div class="invalid-feedback">
                     <div *ngIf="form.get(control.name).errors?.required">Required</div>
                     <div *ngIf="form.get(control.name).errors?.minlength">Min Length Error</div>
@@ -32,7 +32,7 @@
             <div class="mb-3">
                 <label class="form-label">{{ control.label }}</label>
                 <input [min]="control.min" [max]="control.max" [formControlName]="control.name"
-                [value]="control.value" type="number" class="form-control"
+                [value]="control.items.value" type="number" class="form-control"
                     [class.is-invalid]="form.get(control.name).invalid && form.get(control.name).touched">
                 <div class="invalid-feedback">
                     <div *ngIf="form.get(control.name).errors?.required">Required</div>
@@ -46,7 +46,7 @@
         <ng-container *ngIf="control.type === 'email'">
             <div class="mb-3">
                 <label class="form-label">{{ control.label }}</label>
-                <input [formControlName]="control.name" [value]="control.value" [pattern]="control.regex" type="email"  class="form-control"
+                <input [formControlName]="control.name" [value]="control.items.value" [pattern]="control.regex" type="email"  class="form-control"
                     [class.is-invalid]="form.get(control.name).invalid && form.get(control.name).touched">
                 <div class="invalid-feedback">
                     <div *ngIf="form.get(control.name).errors?.required">Required</div>
@@ -60,7 +60,7 @@
 
         <ng-container *ngIf="control.type === 'file'">
             <div class="mb-3">
-                <input [formControlName]="control.name" type="file" class="form-control" [class.is-invalid]="form.get(control.name).invalid && form.get(control.name).touched" aria-label="file example">
+                <input [formControlName]="control.name"  (change)="showPreview($event, control.name)" type="file" class="form-control" [class.is-invalid]="form.get(control.name).invalid && form.get(control.name).touched" aria-label="file example">
                 <div class="invalid-feedback">Invalid File Type</div>
             </div>
         </ng-container>
@@ -68,7 +68,7 @@
         <ng-container *ngIf="control.type === 'date'">
             <div class="mb-3">
                 <label class="form-label">{{ control.label }}</label>
-                <input [formControlName]="control.name" [value]="control.value" type="date" [pattern]="control.regex" type="email"  class="form-control"
+                <input [formControlName]="control.name" [value]="control.items.value" type="date" [pattern]="control.regex"  class="form-control"
                     [class.is-invalid]="form.get(control.name).invalid && form.get(control.name).touched">
                 <div class="invalid-feedback">
                     <div *ngIf="form.get(control.name).errors?.required">Required</div>
@@ -80,7 +80,7 @@
 
     </ng-container>
 
-    <button type="submit" [disabled]="form.invalid">Submit</button>
-    <pre *ngIf="form"><code> Form Valid : {{form.invalid}}</code></pre>
+    <button type="submit" [disabled]="form.invalid" class="btn btn-primary">Submit</button>
+    <!-- <pre *ngIf="form"><code> Form Valid : {{form.invalid}}</code></pre> -->
     <!-- <pre *ngIf="form"><code> Forn Value : {{form.value |json}}</code></pre> -->
 </form>

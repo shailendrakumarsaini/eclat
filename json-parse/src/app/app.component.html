@@ -7,9 +7,9 @@
       </mat-panel-title>
     </mat-expansion-panel-header>
     <form #form="ngForm" >
-      <textarea [(ngModel)]="result" name="result" cols="30" rows="10"></textarea>
+      <textarea [(ngModel)]="result" name="result" cols="170" rows="15"></textarea>
     </form>
-    <button (click)="validate(result)" type="button">Validate</button>
+    <button (click)="validate(result)" type="button" class="btn btn-primary">Validate</button>
     <div *ngIf="parseError" class="alert alert-danger" style="text-align: center;" role="alert">
       <pre>Invalid JSON Format</pre>
     </div>

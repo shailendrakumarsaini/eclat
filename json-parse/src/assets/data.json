@@ -14,7 +14,7 @@
             "items":
                 {
                     "identity": "Uniq select ID",
-                    "value": "abc"
+                    "value": "John"
                 }
         },
         {
@@ -27,7 +27,7 @@
             "items":
                 {
                     "identity": "Uniq select ID",
-                    "value": "abc"
+                    "value": "xyz@gmail.com"
                 }
         },
         {
@@ -42,7 +42,7 @@
             "items":
                 {
                     "identity": "Uniq select ID",
-                    "value": "abc"
+                    "value": "Hellow World"
                 }
         },
         {
@@ -57,11 +57,11 @@
             "items":
                 {
                     "identity": "Uniq select ID",
-                    "value": "abc"
+                    "value": 23
                 }
         },
         {
-            "type": "data",
+            "type": "date",
             "name": "dob",
             "label":"DOB",
             "placeholder": "Enter DOB",
@@ -70,7 +70,20 @@
             "items":
                 {
                     "identity": "Uniq select ID",
-                    "value": "abc"
+                    "value": "2000-01-01"
+                }
+        },
+        {
+            "type": "file",
+            "name": "image",
+            "label":"Image",
+            "placeholder": "Upload Image",
+            "required": false,
+            "regex": "",
+            "items":
+                {
+                    "identity": "Uniq select ID",
+                    "value": ""
                 }
         }
     ]

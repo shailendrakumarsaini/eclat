@@ -1,5 +1,12 @@
 <h3>Form Submission Details</h3>
 
-<h4>{{data.firstName}}</h4>
+<h5 *ngIf="data.name">Your Name : {{data?.name}}</h5>
+<h6 *ngIf="data.age">Your Age : {{data?.age}}</h6>
+<h6 *ngIf="data.dob">Your DOB : {{data?.dob}}</h6>
+<h6 *ngIf="data.email">Your Email : {{data?.email}}</h6>
+<p *ngIf="data.comments">Your Comments {{data?.comments}}</p>
 
+<div class="imagePreview" *ngIf="data?.imageURL && data?.imageURL !== ''">
+    <img [src]="data?.imageURL">
+</div>
 

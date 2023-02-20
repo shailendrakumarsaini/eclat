@@ -13,7 +13,8 @@ import { DialogComponent } from './dialog/dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
-    DynamicFormComponent
+    DynamicFormComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,
