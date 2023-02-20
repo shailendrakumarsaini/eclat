@@ -1,0 +1,77 @@
+{
+    "form": "user",
+    "label": "User Details",
+    "controls": [
+        {
+            "type": "text",
+            "name": "name",
+            "label":"Name",
+            "placeholder": "Enter Name",
+            "required": true,
+            "minLength": 3,
+            "maxLength": 10,
+            "regex": "[a-zA-Z ]*",
+            "items":
+                {
+                    "identity": "Uniq select ID",
+                    "value": "abc"
+                }
+        },
+        {
+            "type": "email",
+            "name": "email",
+            "label":"Email",
+            "placeholder": "Enter Email",
+            "required": true,
+            "regex": "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$",
+            "items":
+                {
+                    "identity": "Uniq select ID",
+                    "value": "abc"
+                }
+        },
+        {
+            "type": "textarea",
+            "name": "comments",
+            "label":"Comments",
+            "placeholder": "Enter Comments",
+            "required": true,
+            "minLength": 3,
+            "maxLength": 100,
+            "regex": "",
+            "items":
+                {
+                    "identity": "Uniq select ID",
+                    "value": "abc"
+                }
+        },
+        {
+            "type": "number",
+            "name": "age",
+            "label":"Age",
+            "placeholder": "Enter Comments",
+            "required": true,
+            "min": 0,
+            "max": 100,
+            "regex": "",
+            "items":
+                {
+                    "identity": "Uniq select ID",
+                    "value": "abc"
+                }
+        },
+        {
+            "type": "data",
+            "name": "dob",
+            "label":"DOB",
+            "placeholder": "Enter DOB",
+            "required": false,
+            "regex": "",
+            "items":
+                {
+                    "identity": "Uniq select ID",
+                    "value": "abc"
+                }
+        }
+    ]
+}
